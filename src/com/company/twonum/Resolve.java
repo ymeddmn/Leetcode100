@@ -31,25 +31,25 @@ public class Resolve {
         int indexs[] = new int[2];
         Arrays.sort(results);//对Result数组进行排序
         int start = 0;
-        int end = results.length-1;
-        while (start<end){//从数组两边开始查找
+        int end = results.length - 1;
+        while (start < end) {//从数组两边开始查找
             Result startValue = results[start];
             Result endValue = results[end];
             int numValue = startValue.value + endValue.value;
-            if(numValue==target){//如果值相等输出数组下标，
-                indexs[0] = Math.min(startValue.index,endValue.index);
-                indexs[1] = Math.max(startValue.index,endValue.index);
-                System.out.println(indexs[0]+","+indexs[1]);
-                if(startValue==results[start+1]){//如果start的下一个元素==start元素 那么start++
+            if (numValue == target) {//如果值相等输出数组下标，
+                indexs[0] = Math.min(startValue.index, endValue.index);
+                indexs[1] = Math.max(startValue.index, endValue.index);
+                System.out.println(indexs[0] + "," + indexs[1]);
+                if (startValue.value == results[start + 1].value) {//如果start的下一个元素==start元素 那么start++
                     start++;
-                }else if(endValue==results[end-1]){//如果end的下一个元素==end元素  那么end--
+                } else if (endValue == results[end - 1]) {//如果end的下一个元素==end元素  那么end--
                     end--;
-                }else {//end--
+                } else {//end--
                     end--;
                 }
-            }else if(numValue>target){//如果大于target  end--
+            } else if (numValue > target) {//如果大于target  end--
                 end--;
-            }else {//如果小于target  start++
+            } else {//如果小于target  start++
                 start++;
             }
         }
